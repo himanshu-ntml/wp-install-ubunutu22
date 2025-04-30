@@ -8,8 +8,11 @@ fi
 
 # Check if PHP-FPM is installed
 if ! command -v php-fpm &> /dev/null; then
-    echo "PHP-FPM is not installed. Please install PHP-FPM first."
-    exit 1
+    # Check if PHP-FPM service exists with version
+    if ! systemctl list-units | grep -q 'php.*-fpm'; then
+        echo "PHP-FPM is not installed. Please install PHP-FPM first."
+        exit 1
+    fi
 fi
 
 # Nginx cache directory
