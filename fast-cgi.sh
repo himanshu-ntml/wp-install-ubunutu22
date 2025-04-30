@@ -10,7 +10,7 @@ fi
 if ! command -v php-fpm &> /dev/null; then
     # Check if PHP-FPM service exists with version
     if ! systemctl list-units | grep -q 'php.*-fpm'; then
-        echo "PHP-FPM is not installed. Please install PHP-FPM first."
+        echo "PHP-FPM first."
         exit 1
     fi
 fi
